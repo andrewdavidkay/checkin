@@ -8,6 +8,13 @@
       "when": 1770588867777,
       "tag": "0000_bright_dexter_bennett",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1770592966332,
+      "tag": "0001_powerful_mariko_yashida",
+      "breakpoints": true
     }
   ]
 }
