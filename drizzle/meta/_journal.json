@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1770588867777,
-      "tag": "0000_bright_dexter_bennett",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1770592966332,
-      "tag": "0001_powerful_mariko_yashida",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1770659513202,
-      "tag": "0002_dry_warlock",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1770744606425,
-      "tag": "0003_dusty_dexter_bennett",
+      "when": 1770764323694,
+      "tag": "0000_strange_piledriver",
       "breakpoints": true
     }
   ]

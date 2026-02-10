@@ -10,8 +10,21 @@ export default function Post() {
 
   return (
     <form action={createPost} className="space-y-3">
-      {/* Pass the current user id through a hidden field so the server action can use it */}
       <input type="hidden" name="userId" value={session?.user.id ?? ""} />
+
+      <label
+        htmlFor="title"
+        className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+      >
+        Title
+      </label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        className="mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50"
+        placeholder="Give it a title"
+      />
 
       <label
         htmlFor="content"
