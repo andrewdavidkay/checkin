@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 
 export default function SignupPage() {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -33,9 +31,8 @@ export default function SignupPage() {
         return;
       }
 
-      // Redirect on success
-      router.push("/");
-      router.refresh();
+      // Redirect on success with a full reload so client & server auth state match
+      window.location.href = "/";
     } catch (err) {
       setError("An unexpected error occurred");
       setLoading(false);
