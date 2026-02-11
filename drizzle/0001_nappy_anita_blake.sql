@@ -1,0 +1,1 @@
+ALTER TABLE "fav" DROP COLUMN "rank";
