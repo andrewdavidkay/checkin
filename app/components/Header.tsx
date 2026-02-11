@@ -30,7 +30,7 @@ export function Header() {
           ) : session?.user ? (
             <>
               <span className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1.5 text-sm font-medium text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200">
-                <Link href={`/@${session.user.username}`}>
+                <Link href={`/${session.user.username}`}>
                   Logged in as{" "}
                   {session.user.username ?? session.user.email ?? "user"}
                 </Link>
