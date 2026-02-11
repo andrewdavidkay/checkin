@@ -16,28 +16,28 @@ export default function Post() {
         htmlFor="title"
         className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
       >
-        Title
+        Favorite Anything
       </label>
       <input
         id="title"
         name="title"
         type="text"
         className="mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50"
-        placeholder="Give it a title"
+        placeholder="hit us with your best shot"
       />
 
       <label
         htmlFor="content"
         className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
       >
-        How was your day?
+        Favorite Description
       </label>
 
       <Textarea
         id="content"
         name="content"
         rows={4}
-        placeholder="Write about your day…"
+        placeholder="Write about your favorite…"
       />
 
       <Button type="submit" variant="outline">
