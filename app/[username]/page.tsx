@@ -34,9 +34,9 @@ export default async function UserPage({
     <div>
       <h1>{profile.username}</h1>
 
-      <ul className="flex flex-wrap gap-3 list-none p-0 m-0" aria-label="Favs">
+      <ul className="flex flex-col gap-3 list-none p-0 m-0" aria-label="Favs">
         {userFavs.map((fav) => (
-          <li key={fav.id} className="inline">
+          <li key={fav.id}>
             {fav.title} — {fav.content}
           </li>
         ))}
