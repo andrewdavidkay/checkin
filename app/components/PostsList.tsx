@@ -7,6 +7,7 @@ export async function PostsList() {
   const allPosts = await db
     .select({
       id: posts.id,
+      slug: posts.slug,
       title: posts.title,
       description: posts.description,
       photoUrl: posts.photoUrl,
@@ -30,7 +31,7 @@ export async function PostsList() {
             >
               @{post.username}
             </Link>
-            <Link href={`/posts/${post.id}`} className="block mt-1">
+            <Link href={`/p/${post.slug}`} className="block mt-1">
               <p className="font-medium hover:underline">{post.title}</p>
               {post.description && (
                 <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
@@ -39,15 +40,13 @@ export async function PostsList() {
               )}
             </Link>
           </div>
-          {post.photoUrl && (
-            <Link href={`/posts/${post.id}`} className="shrink-0">
-              <img
-                src={post.photoUrl}
-                alt=""
-                className="h-20 w-20 rounded-lg object-cover"
-              />
-            </Link>
-          )}
+          <Link href={`/p/${post.slug}`} className="shrink-0">
+            <img
+              src={post.photoUrl}
+              alt=""
+              className="h-20 w-20 rounded-lg object-cover"
+            />
+          </Link>
         </li>
       ))}
     </ul>

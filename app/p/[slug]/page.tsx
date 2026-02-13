@@ -3,13 +3,15 @@ import { db } from "@/lib/database";
 import { posts, user } from "@/lib/schema";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
+import { slugify } from "@/lib/slug";
 
 export default async function PostPage({
   params,
 }: {
-  params: Promise<{ postId: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { postId } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = slugify(rawSlug) || rawSlug;
 
   const [post] = await db
     .select({
@@ -22,7 +24,7 @@ export default async function PostPage({
     })
     .from(posts)
     .innerJoin(user, eq(posts.userId, user.id))
-    .where(eq(posts.id, postId))
+    .where(eq(posts.slug, slug))
     .limit(1);
 
   if (!post) notFound();
@@ -39,13 +41,11 @@ export default async function PostPage({
       {post.description && (
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">{post.description}</p>
       )}
-      {post.photoUrl && (
-        <img
-          src={post.photoUrl}
-          alt=""
-          className="mt-4 max-w-lg rounded-lg"
-        />
-      )}
+      <img
+        src={post.photoUrl}
+        alt=""
+        className="mt-4 max-w-lg rounded-lg"
+      />
     </article>
   );
 }

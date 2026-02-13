@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { db } from "@/lib/database";
 import { user, posts } from "@/lib/schema";
 import { eq, desc } from "drizzle-orm";
@@ -25,7 +26,7 @@ export default async function UserPage({
   if (!profile) notFound();
 
   const userPosts = await db
-    .select()
+    .select({ id: posts.id, slug: posts.slug, title: posts.title, description: posts.description, photoUrl: posts.photoUrl })
     .from(posts)
     .where(eq(posts.userId, profile.id))
     .orderBy(desc(posts.createdAt));
@@ -36,15 +37,15 @@ export default async function UserPage({
       <ul className="flex flex-col gap-3 list-none p-0 m-0" aria-label="Posts">
         {userPosts.map((post) => (
           <li key={post.id}>
-            {post.title}
+            <Link href={`/p/${post.slug}`} className="font-medium hover:underline">
+              {post.title}
+            </Link>
             {post.description && ` — ${post.description}`}
-            {post.photoUrl && (
-              <img
-                src={post.photoUrl}
-                alt=""
-                className="mt-2 max-w-xs rounded-lg"
-              />
-            )}
+            <img
+              src={post.photoUrl}
+              alt=""
+              className="mt-2 max-w-xs rounded-lg"
+            />
           </li>
         ))}
       </ul>

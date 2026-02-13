@@ -22,6 +22,13 @@
       "when": 1770941018781,
       "tag": "0002_narrow_shotgun",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1770948718464,
+      "tag": "0003_quick_wild_child",
+      "breakpoints": true
     }
   ]
 }

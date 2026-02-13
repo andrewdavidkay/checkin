@@ -22,6 +22,7 @@ export default function Post() {
         id="title"
         name="title"
         type="text"
+        required
         className="mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50"
         placeholder="could be anything. "
       />
@@ -52,6 +53,7 @@ export default function Post() {
         name="photo"
         type="file"
         accept="image/*"
+        required
         className="mt-1 block w-full text-sm text-zinc-500 file:mr-4 file:rounded-md file:border-0 file:bg-zinc-100 file:px-4 file:py-2 file:text-sm file:font-medium file:text-zinc-700 dark:file:bg-zinc-800 dark:file:text-zinc-200"
       />
 
