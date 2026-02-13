@@ -37,7 +37,7 @@ export default function Post() {
         id="description"
         name="description"
         rows={4}
-        placeholder="Write about your favorite…"
+        placeholder="Let us know what we're looking at."
       />
 
       <label
