@@ -1,5 +1,5 @@
 import { db } from "@/lib/database";
-import { user, favs } from "@/lib/schema";
+import { user, posts } from "@/lib/schema";
 import { eq, desc } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
@@ -24,20 +24,27 @@ export default async function UserPage({
 
   if (!profile) notFound();
 
-  const userFavs = await db
+  const userPosts = await db
     .select()
-    .from(favs)
-    .where(eq(favs.userId, profile.id))
-    .orderBy(desc(favs.createdAt));
+    .from(posts)
+    .where(eq(posts.userId, profile.id))
+    .orderBy(desc(posts.createdAt));
 
   return (
     <div>
       <h1>{profile.username}</h1>
-
-      <ul className="flex flex-col gap-3 list-none p-0 m-0" aria-label="Favs">
-        {userFavs.map((fav) => (
-          <li key={fav.id}>
-            {fav.title} — {fav.content}
+      <ul className="flex flex-col gap-3 list-none p-0 m-0" aria-label="Posts">
+        {userPosts.map((post) => (
+          <li key={post.id}>
+            {post.title}
+            {post.description && ` — ${post.description}`}
+            {post.photoUrl && (
+              <img
+                src={post.photoUrl}
+                alt=""
+                className="mt-2 max-w-xs rounded-lg"
+              />
+            )}
           </li>
         ))}
       </ul>

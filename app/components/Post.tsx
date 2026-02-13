@@ -27,17 +27,32 @@ export default function Post() {
       />
 
       <label
-        htmlFor="content"
+        htmlFor="description"
         className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
       >
         Favorite Description
       </label>
 
       <Textarea
-        id="content"
-        name="content"
+        id="description"
+        name="description"
         rows={4}
         placeholder="Write about your favorite…"
+      />
+
+      <label
+        htmlFor="photoUrl"
+        className="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+      >
+        Photo URL (optional)
+      </label>
+
+      <input
+        id="photoUrl"
+        name="photoUrl"
+        type="url"
+        placeholder="https://…"
+        className="mt-1 block w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50"
       />
 
       <Button type="submit" variant="outline">

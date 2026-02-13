@@ -1,16 +1,13 @@
 "use server";
 
 import { db } from "@/lib/database";
-import { favs } from "@/lib/schema";
+import { posts } from "@/lib/schema";
 
 export async function createPost(formData: FormData) {
   const title = formData.get("title");
-  const content = formData.get("content");
+  const description = formData.get("description");
+  const photoUrl = formData.get("photoUrl");
   const userId = formData.get("userId");
-
-  if (typeof content !== "string" || !content.trim()) {
-    return;
-  }
 
   const titleStr =
     typeof title === "string" && title.trim() ? title.trim() : "Untitled";
@@ -19,10 +16,14 @@ export async function createPost(formData: FormData) {
     throw new Error("Not authenticated");
   }
 
-  await db.insert(favs).values({
+  await db.insert(posts).values({
     id: crypto.randomUUID(),
     userId,
     title: titleStr,
-    content,
+    description: typeof description === "string" ? description : null,
+    photoUrl:
+      typeof photoUrl === "string" && photoUrl.trim()
+        ? photoUrl.trim()
+        : null,
   });
 }
